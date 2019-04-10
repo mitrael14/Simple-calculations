@@ -4,26 +4,28 @@ namespace Some_calculations
 {
     class Program
     {
-        static (double sum, double sub, double div, double mul) MultiCalc(double[] numbers)
+        static void MultiCalc(double[] numbers)
         {
-            var result = (sum: 0.0, sub: 0.0, div: 1.0, mul: 1.0);
-            for (int i = 0; i < numbers.Length; i++)
+            var result = (sum: 0.0, average:0.0, rootMeanSquare: 0.0, squaresSum: 0.0);
+            int numbersQuantity = numbers.Length;
+            for (int i = 0; i < numbersQuantity; i++)
             {
                 result.sum += numbers[i];
-                result.sub -= numbers[i];
-                result.div /= numbers[i];
-                result.mul *= numbers[i];
+                result.squaresSum += Math.Pow(numbers[i], 2.0);
             }
-            Console.WriteLine("Сложение: {0}", result.sum);
-            Console.WriteLine("Вычитание: {0}", result.sub);
-            Console.WriteLine("Деление: {0}", result.div);
-            Console.WriteLine("Произвдение: {0}", result.mul);
-            return result;
+            result.rootMeanSquare = Math.Sqrt(result.squaresSum / numbersQuantity);
+            result.average = result.sum / numbersQuantity;
+            Console.WriteLine(
+            "Сложение:                  {0}\n" +
+            "Среднее арифметическое:    {1}\n" +
+            "Сумма квадратов:           {2}\n" +
+            "Среднее квадратическое:    {3}\n",
+            result.sum, result.average, result.squaresSum, result.rootMeanSquare);
         }
         static void Main(string[] args)
         {
             double[] nums = new double[10];
-            Console.WriteLine("Введи последовательность 10-и чисел для комлексного вычисления");//чтотоннапишу
+            Console.WriteLine("Введи последовательность 10-и чисел для комлексного вычисления");
             for (int i = 0; i < 10; i++)
             {
                 nums[i] = double.Parse(Console.ReadLine());

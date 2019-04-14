@@ -15,28 +15,133 @@ namespace Some_calculations
         public void Sorting()
         {
             double numbersQuantity = numbers.Length;
-            Console.Write("Исходное расположение чисел: ");
-            for (int i = 0; i< numbersQuantity; i++)
+            Console.WriteLine("Вывести заданный массив на экран? Y/N");
+            string answer = Console.ReadLine();
+            if ((answer == "Y") || (answer == "y"))
             {
-                Console.Write(numbers[i] + ", ");
-            }
-            Console.WriteLine();
-            Console.Write("Расположение чисел по убыванию: ");
-            for (int i = 0; i < numbersQuantity - 1; i++)                                //Сортировка по убыванию до предпоследнего
-            {                                                                            //члена, так как последний автоматически     
-                for (int j = i + 1; j < numbersQuantity; j++)                            //будет минимальным  
+                Console.Write("Исходное расположение чисел: ");
+                for (int i = 0; i < numbersQuantity; i++)
                 {
-                    if (numbers[j] > numbers[i])
-                    {
-                        Tools.Swap(ref numbers[i], ref numbers[j]);
+                    Console.Write(numbers[i] + ", ");
+                }
+                Console.WriteLine();
+            }
+            else if ((answer == "N") || (answer == "n"))
+            {
+
+            }
+            else
+            {
+                Console.WriteLine(
+                    "Некорректный ввод.\n" +
+                    "Заданный массив будет выведен");
+                Console.Write("Исходное расположение чисел: ");
+                for (int i = 0; i < numbersQuantity; i++)
+                {
+                    Console.Write(numbers[i] + ", ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Отсортировать массив? Y/N");
+            answer = Console.ReadLine();
+            if ((answer == "Y") || (answer == "y"))
+            {
+                Console.WriteLine(
+                    "Чтобы отсортировать массив по убыванию введи D\n" +
+                    "Чтобы отсортировать массив по возрастанию введи U");
+                answer = Console.ReadLine();
+                if ((answer == "D") || (answer == "d"))
+                {
+                    for (int i = 0; i < numbersQuantity - 1; i++)                                //Сортировка по убыванию до предпоследнего
+                    {                                                                            //члена, так как последний автоматически     
+                        for (int j = i + 1; j < numbersQuantity; j++)                            //будет минимальным  
+                        {
+                            if (numbers[j] > numbers[i])
+                            {
+                                Tools.Swap(ref numbers[i], ref numbers[j]);
+                            }
+                        }
                     }
+                    Console.Write("Расположение чисел по убыванию: ");
+
+                    for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+                    {
+                        Console.Write(numbers[i] + ", ");
+                    }
+                    Console.WriteLine();
+                }
+                else if ((answer == "U") || (answer == "u"))
+                {
+                    for (int i = 0; i < numbersQuantity - 1; i++)                                //Сортировка по возрастанию до предпоследнего
+                    {                                                                            //члена, так как последний автоматически     
+                        for (int j = i + 1; j < numbersQuantity; j++)                            //будет максимальным  
+                        {
+                            if (numbers[j] < numbers[i])
+                            {
+                                Tools.Swap(ref numbers[i], ref numbers[j]);
+                            }
+                        }
+                    }
+                    Console.Write("Расположение чисел по возрастанию: ");
+
+                    for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+                    {
+                        Console.Write(numbers[i] + ", ");
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("Некоррентный ввод, будет выполнена сортировка массива по убыванию");
+                    for (int i = 0; i < numbersQuantity - 1; i++)                                //Сортировка по убыванию до предпоследнего
+                    {                                                                            //члена, так как последний автоматически     
+                        for (int j = i + 1; j < numbersQuantity; j++)                            //будет минимальным  
+                        {
+                            if (numbers[j] > numbers[i])
+                            {
+                                Tools.Swap(ref numbers[i], ref numbers[j]);
+                            }
+                        }
+                    }
+                    Console.Write("Расположение чисел по убыванию: ");
+
+                    for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+                    {
+                        Console.Write(numbers[i] + ", ");
+                    }
+                    Console.WriteLine();
                 }
             }
-            for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+            else if ((answer == "N") || (answer == "n"))
             {
-                Console.Write(numbers[i] + ", ");
+
             }
-            Console.WriteLine();
+            else
+            {
+                Console.WriteLine(
+                    "Некорректный ввод.\n" +
+                    "Последовательность будет отсортирована по убыванию.");
+                for (int i = 0; i < numbersQuantity - 1; i++)                                //Сортировка по убыванию до предпоследнего
+                {                                                                            //члена, так как последний автоматически     
+                    for (int j = i + 1; j < numbersQuantity; j++)                            //будет минимальным  
+                    {
+                        if (numbers[j] > numbers[i])
+                        {
+                            Tools.Swap(ref numbers[i], ref numbers[j]);
+                        }
+                    }
+
+                }
+                Console.Write("Расположение чисел по убыванию: ");
+
+                for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+                {
+                    Console.Write(numbers[i] + ", ");
+                }
+                Console.WriteLine();
+            }
+
         }
 
         public void MultiCalc()

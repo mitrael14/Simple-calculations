@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Some_calculations
 {
-    class Tools
+    public class Tools
     {
         // Вспомогательный метод, меняющий значения переменных местами
         public static void Swap(ref double itemToSwap1, ref double itemToSwap2)

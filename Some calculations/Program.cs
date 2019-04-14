@@ -7,12 +7,11 @@ namespace Some_calculations
         //Основное тело программы
         static void Main()
         {
-            double[] nums = new double[10];
-            Console.WriteLine("Введи последовательность 10-и чисел для комлексного вычисления");
-            for (int i = 0; i < 10; i++)
-            {
-                nums[i] = double.Parse(Console.ReadLine());
-            }
+            double[] nums;
+            int lenght;
+            ArrayBuilder array = new ArrayBuilder();
+            lenght = array.LenghtBuild();
+            nums = array.ArrayBuild(lenght);
             Calculator calculator = new Calculator(nums);
             calculator.Sorting();
             calculator.MultiCalc();

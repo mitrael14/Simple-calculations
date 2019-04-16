@@ -8,7 +8,7 @@ namespace Some_calculations
         static void Main()
         {
             double[] nums;
-            int lenght;
+            uint lenght;
             ArrayBuilder array = new ArrayBuilder();
             lenght = array.LenghtBuild();
             nums = array.ArrayBuild(lenght);

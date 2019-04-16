@@ -6,19 +6,30 @@ namespace Some_calculations
 {
     public class ArrayBuilder
     {
-        public int LenghtBuild()
+        public uint LenghtBuild()
         {
             Random rnd = new Random();
-            int arrayLenght;
+            uint arrayLenght;
+            string letter;
             Console.WriteLine(
                 "Требуется указать длину массива.\n" +
                 "Введи R,чтобы сгенерировать длину случайно\n" +
                 "Введи M, чтобы задать длину вручную");
-
-            switch (Console.ReadLine())
+            letter = Console.ReadLine();
+            while (
+                !(letter == "R") && !(letter == "r") && 
+                !(letter == "M") && !(letter == "m"))
+            {
+                Console.WriteLine(
+                    "Некорректный ввод\n" +
+                    "Введи R,чтобы сгенерировать длину случайно\n" +
+                    "Введи M, чтобы задать длину вручную");
+                letter = Console.ReadLine();
+            }
+            switch (letter)
             {
                 case "R":
-                    arrayLenght = rnd.Next(3, 30);
+                    arrayLenght = (uint)rnd.Next(3, 30);
                     return arrayLenght;
 
                 case "r":
@@ -26,17 +37,13 @@ namespace Some_calculations
 
                 case "M":
                     Console.WriteLine("Введи длину массива");
-                    if (Int32.TryParse(Console.ReadLine(), out arrayLenght))
-                    {
-                        return arrayLenght;
-                    }
-                    else
+                    while (!UInt32.TryParse(Console.ReadLine(), out arrayLenght))
                     {
                         Console.WriteLine(
                             "Некорректный ввод\n" +
-                            "Длина массива будет автоматически приравнена 5");
-                        return 5;
+                            "Введи длину массива(целое, неотрицательное число)");
                     }
+                    return arrayLenght;
                 case "m":
                     goto case "M";
 
@@ -48,17 +55,30 @@ namespace Some_calculations
             }
         }
 
-        public double[] ArrayBuild(int lenght)
+        public double[] ArrayBuild(uint lenght)
         {
             Random rnd = new Random();
+            string letter;
             double[] nums = new double[lenght];
             Console.WriteLine(
-                "Требуется указать члены массива.\n" +
+                "Требуется указать значения для элементов массива.\n" +
                 "Введи R1,чтобы сгенерировать случайные целочисленные значения элементов\n" +
                 "Введи R2,чтобы сгенерировать случайные вещественные значения элементов\n" +
                 "Введи M, чтобы задать значения элементов вручную");
-
-                switch (Console.ReadLine())
+            letter = Console.ReadLine();
+            while (
+                !(letter == "R1") && !(letter == "r1") &&
+                !(letter == "R2") && !(letter == "r2") && 
+                !(letter == "M") && !(letter == "m"))
+            {
+                Console.WriteLine(
+                    "Некорректный ввод\n" +
+                    "Введи R1,чтобы сгенерировать случайные целочисленные значения элементов\n" +
+                    "Введи R2,чтобы сгенерировать случайные вещественные значения элементов\n" +
+                    "Введи M, чтобы задать значения элементов вручную");
+                letter = Console.ReadLine();
+            }
+            switch (letter)
                 {
                     case "R1":
                         for (int i = 0; i < lenght; i++)
@@ -81,21 +101,17 @@ namespace Some_calculations
                         goto case "R2";
 
                     case "M":
-                        for (int i = 0; i < lenght; i++)
-                        {
+                    for (int i = 0; i < lenght; i++)
+                    {
                         Console.WriteLine($"Введи значение {i + 1}-го элемента");
-                        if (Double.TryParse(Console.ReadLine(), out nums[i]))
-                            {
-                            }
-                            else
-                            {
+                        while (!Double.TryParse(Console.ReadLine(), out nums[i]))
+                        {
                             Console.WriteLine(
                                  "Некорректный ввод.\n" +
-                                $"Элементу с номером {i} будет присвоено случайное вещественное число");
-                            nums[i] = Math.Round(rnd.NextDouble() * rnd.Next(1, 9000), 2);
-                            }
-
+                                 "Введи число заново");
                         }
+
+                    }
                         return nums;
 
                     case "m":

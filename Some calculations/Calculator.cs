@@ -17,14 +17,23 @@ namespace Some_calculations
             double numbersQuantity = numbers.Length;
             Console.WriteLine("Вывести заданный массив на экран? Y/N");
             string answer = Console.ReadLine();
+            while (
+                  !(answer == "Y") && !(answer == "y") &&
+                  !(answer == "N") && !(answer == "n"))
+            {
+                Console.WriteLine(
+                    "Некорректный ввод\n" +
+                    "Вывести заданный массив на экран? Y/N");
+                answer = Console.ReadLine();
+            }
             if ((answer == "Y") || (answer == "y"))
             {
-                Console.Write("Исходное расположение чисел: ");
-                for (int i = 0; i < numbersQuantity; i++)
+                Console.Write("Исходное расположение чисел: " + numbers[0]);
+                for (int i = 1; i < numbersQuantity; i++)
                 {
-                    Console.Write(numbers[i] + ", ");
+                    Console.Write(", " + numbers[i]);
                 }
-                Console.WriteLine();
+                Console.WriteLine(".");
             }
             else if ((answer == "N") || (answer == "n"))
             {
@@ -35,22 +44,41 @@ namespace Some_calculations
                 Console.WriteLine(
                     "Некорректный ввод.\n" +
                     "Заданный массив будет выведен");
-                Console.Write("Исходное расположение чисел: ");
-                for (int i = 0; i < numbersQuantity; i++)
+                Console.Write($"Исходное расположение чисел: {numbers[0]}");
+                for (int i = 1; i < numbersQuantity; i++)
                 {
-                    Console.Write(numbers[i] + ", ");
+                    Console.Write(", " + numbers[i]);
                 }
-                Console.WriteLine();
+                Console.WriteLine(".");
             }
 
             Console.WriteLine("Отсортировать массив? Y/N");
             answer = Console.ReadLine();
+            while (
+                !(answer == "Y") & !(answer == "y") &
+                !(answer == "N") & !(answer == "n"))
+            {
+                Console.WriteLine(
+                    "Некорректный ввод\n" +
+                    "Отсортировать массив? Y/N");
+                answer = Console.ReadLine();
+            }
             if ((answer == "Y") || (answer == "y"))
             {
                 Console.WriteLine(
                     "Чтобы отсортировать массив по убыванию введи D\n" +
                     "Чтобы отсортировать массив по возрастанию введи U");
                 answer = Console.ReadLine();
+                while (
+                    !(answer == "D") && !(answer == "d") &&
+                    !(answer == "U") && !(answer == "u"))
+                {
+                    Console.WriteLine(
+                        "Некорректный ввод\n" +
+                        "Чтобы отсортировать массив по убыванию введи D\n" +
+                        "Чтобы отсортировать массив по возрастанию введи U");
+                    answer = Console.ReadLine();
+                }
                 if ((answer == "D") || (answer == "d"))
                 {
                     for (int i = 0; i < numbersQuantity - 1; i++)                                //Сортировка по убыванию до предпоследнего
@@ -63,13 +91,13 @@ namespace Some_calculations
                             }
                         }
                     }
-                    Console.Write("Расположение чисел по убыванию: ");
+                    Console.Write("Расположение чисел по убыванию: " + numbers[0]);
 
-                    for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+                    for (int i = 1; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
                     {
-                        Console.Write(numbers[i] + ", ");
+                        Console.Write(", " + numbers[i]);
                     }
-                    Console.WriteLine();
+                    Console.WriteLine(".");
                 }
                 else if ((answer == "U") || (answer == "u"))
                 {
@@ -83,13 +111,13 @@ namespace Some_calculations
                             }
                         }
                     }
-                    Console.Write("Расположение чисел по возрастанию: ");
+                    Console.Write("Расположение чисел по возрастанию: " + numbers[0]);
 
-                    for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+                    for (int i = 1; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
                     {
-                        Console.Write(numbers[i] + ", ");
+                        Console.Write(", " + numbers[i]);
                     }
-                    Console.WriteLine();
+                    Console.WriteLine(".");
                 }
                 else
                 {
@@ -133,13 +161,13 @@ namespace Some_calculations
                     }
 
                 }
-                Console.Write("Расположение чисел по убыванию: ");
+                Console.Write("Расположение чисел по убыванию: " + numbers[0]);
 
-                for (int i = 0; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
+                for (int i = 1; i < numbersQuantity; i++)                                    //Вывод на экран отсортированной последовательности
                 {
-                    Console.Write(numbers[i] + ", ");
+                    Console.Write(", " + numbers[i]);
                 }
-                Console.WriteLine();
+                Console.WriteLine(".");
             }
 
         }
